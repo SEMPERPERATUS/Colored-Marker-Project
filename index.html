@@ -243,26 +243,26 @@
 
     markers.forEach(marker => {
       marker.addEventListener("click", () => {
-        // Add active class to trigger lid animation
-        marker.classList.add("active");
+        const isActive = marker.classList.contains("active");
 
-        // Delay the opening sound slightly to sync with lid motion
-        setTimeout(() => {
+        if (isActive) {
+          // Lid is open → close it
+          marker.classList.remove("active");
+
+          // Play closing sound
+          const closeAudio = new Audio("snap.mp3");
+          closeAudio.play();
+        } else {
+          // Lid is closed → open it
+          marker.classList.add("active");
+
+          // Play opening sound
           const openSoundSrc = marker.getAttribute("data-sound");
           if (openSoundSrc) {
             const openAudio = new Audio(openSoundSrc);
             openAudio.play();
           }
-        }, 100); // slight delay for realism
-
-        // Remove active class after animation and play closing sound
-        setTimeout(() => {
-          marker.classList.remove("active");
-
-          // Play closing sound (optional: use a different file like "snap.mp3")
-          const closeAudio = new Audio("snap.mp3");
-          closeAudio.play();
-        }, 400); // matches lid animation duration
+        }
       });
     });
   });
