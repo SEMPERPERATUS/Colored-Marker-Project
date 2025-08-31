@@ -1,2 +1,257 @@
-# Colored-Marker-Project
-A set of colored markers with hover-ability.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Colors of the World</title>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fdf6e3;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 3em;
+      text-shadow: 1px 1px #ffc107;
+      text-align: center;
+      color: #ff3c00;
+      margin-bottom: 2rem;
+    }
+
+    .marker-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 8rem;
+    }
+
+    .marker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 60px;
+      position: relative;
+    }
+
+    .lid {
+        top: -75px;
+      width: 36px;
+      height: 80px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      transition: transform 0.2s ease;
+      position: absolute;
+      z-index: 2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .marker-body {
+      background-color: white;
+      width: 36px;
+      height: 180px;
+      border-radius: 6px;
+      position: relative;
+      box-shadow: inset 0 0 0 2px #ccc;
+      margin-top: -4px;
+      z-index: 0;
+    }
+
+    .marker-stripe {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 4px;
+    }
+
+    .marker-stripe.top {
+      top: 20px;
+    }
+
+    .marker-stripe.bottom {
+      top: 150px;
+    }
+
+    .marker-label {
+      margin-top: 0.5rem;
+      font-weight: bold;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    /* Hover effect */
+    .marker:hover .lid {
+      transform: translateY(-40px);
+      transition: transform 0.3s ease;
+    }
+    
+    .marker.active .lid {
+  transform: translateY(-40px); /* or whatever your "up" position is */
+}
+
+.marker .lid {
+  transition: transform 0.3s ease;
+}
+    
+  .tip {
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 30px solid black;
+  border-radius: 0 0 10px 10px; /* rounds the bottom point */
+  position: absolute;
+  top: -27px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+    /* Lid Colors */
+    .red .lid { background-color: #c62828; }
+    .orange .lid { background-color: #FF9C1A; }
+    .yellow .lid { background-color: #FFFF00; }
+    .green .lid { background-color: #388E3C; }
+    .blue .lid { background-color: #0026A3; }
+    .indigo .lid { background-color: #4B0082; }
+    .violet .lid { background-color: #EE82EE; }
+
+    /* Stripe Colors */
+    .red .marker-stripe,
+    .red .marker-tip { background-color: #c62828; }
+
+    .orange .marker-stripe,
+    .orange .marker-tip { background-color: #FF9C1A; }
+
+    .yellow .marker-stripe,
+    .yellow .marker-tip { background-color: #FFFF00; }
+
+    .green .marker-stripe,
+    .green .marker-tip { background-color: #388E3C; }
+
+    .blue .marker-stripe,
+    .blue .marker-tip { background-color: #0026A3; }
+
+    .indigo .marker-stripe,
+    .indigo .marker-tip { background-color: #4B0082; }
+
+    .violet .marker-stripe,
+    .violet .marker-tip { background-color: #EE82EE; }
+
+    /* Label Colors */
+    .red .marker-label { color: #c62828; }
+    .orange .marker-label { color: #FF9C1A; }
+    .yellow .marker-label { color: goldenrod; }
+    .green .marker-label { color: #388E3C; }
+    .blue .marker-label { color: #0026A3; }
+    .indigo .marker-label { color: #4B0082; }
+    .violet .marker-label { color: #EE82EE; }
+    
+    /* tip colors */
+    .tip-red    { border-bottom-color: #c62828; }
+.tip-orange { border-bottom-color: #FF9C1A; }
+.tip-yellow { border-bottom-color: #FFFF00; }
+.tip-green  { border-bottom-color: #388E3C; }
+.tip-blue   { border-bottom-color: #0026A3; }
+.tip-indigo { border-bottom-color: #4B0082; }
+.tip-violet { border-bottom-color: #EE82EE; }
+
+  </style>
+
+
+
+  <h1>Colors of the World</h1>
+
+  <div class="marker-grid">
+
+    <div class="marker red">
+      <div class="lid"></div>
+      <div class="marker-body">
+        <div class="marker-stripe top"></div>
+        <div class="marker-stripe bottom"></div>
+        <div class="tip tip-red"></div>
+      </div>
+      <div class="marker-label">Red</div>
+    </div>
+
+    <div class="marker orange">
+      <div class="lid"></div>
+      <div class="marker-body">
+        <div class="marker-stripe top"></div>
+        <div class="marker-stripe bottom"></div>
+        <div class="tip tip-orange"></div>
+      </div>
+      <div class="marker-label">Orange</div>
+    </div>
+
+    <div class="marker yellow">
+      <div class="lid"></div>
+      <div class="marker-body">
+        <div class="marker-stripe top"></div>
+        <div class="marker-stripe bottom"></div>
+        <div class="tip tip-yellow"></div>
+      </div>
+      <div class="marker-label">Yellow</div>
+    </div>
+
+    <div class="marker green">
+      <div class="lid"></div>
+      <div class="marker-body">
+        <div class="marker-stripe top"></div>
+        <div class="marker-stripe bottom"></div>
+        <div class="tip tip-green"></div>
+      </div>
+      <div class="marker-label">Green</div>
+    </div>
+
+    <div class="marker blue">
+      <div class="lid"></div>
+      <div class="marker-body">
+        <div class="marker-stripe top"></div>
+        <div class="marker-stripe bottom"></div>
+        <div class="tip tip-blue"></div>
+      </div>
+      <div class="marker-label">Blue</div>
+    </div>
+
+    <div class="marker indigo">
+      <div class="lid"></div>
+      <div class="marker-body">
+        <div class="marker-stripe top"></div>
+        <div class="marker-stripe bottom"></div>
+        <div class="tip tip-indigo"></div>
+      </div>
+      <div class="marker-label">Indigo</div>
+    </div>
+
+    <div class="marker violet">
+      <div class="lid"></div>
+      <div class="marker-body">
+        <div class="marker-stripe top"></div>
+        <div class="marker-stripe bottom"></div>
+        <div class="tip tip-violet"></div>
+      </div>
+      <div class="marker-label">Violet</div>
+    </div>
+  </div>
+
+<script>
+    
+document.querySelectorAll('.marker').forEach(marker => {
+  marker.addEventListener('click', () => {
+    // If this marker is already active, deactivate it
+    if (marker.classList.contains('active')) {
+      marker.classList.remove('active');
+    } else {
+      // Remove 'active' from all markers
+      document.querySelectorAll('.marker').forEach(m => m.classList.remove('active'));
+      // Activate the clicked marker
+      marker.classList.add('active');
+    }
+  });
+});
+</script>
