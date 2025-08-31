@@ -21,6 +21,10 @@
       margin-bottom: 2rem;
     }
 
+    .marker.active .lid {
+  transform: translateY(-40px);
+}
+
     .marker-grid {
       display: flex;
       flex-wrap: wrap;
@@ -83,11 +87,7 @@
       text-align: center;
     }
 
-  .marker:hover .lid {
-  transform: translateY(-40px);
-  transition: transform 0.3s ease;
-}
-
+ 
 .marker .lid {
   transition: transform 0.3s ease;
 }
