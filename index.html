@@ -240,27 +240,22 @@
   </div>
 
 
-  <button id="red-marker">Red Marker</button>
-
   <audio id="click-sound" src="click.mp3"></audio>
 
-  <DOMContentLoaded>
-  <script>
-   document.addEventListener("DOMContentLoaded", () => {
-  const markers = document.querySelectorAll(".marker");
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const markers = document.querySelectorAll(".marker");
 
-  markers.forEach(marker => {
-    marker.addEventListener("click", () => {
-      const soundSrc = marker.getAttribute("data-sound");
-      if (soundSrc) {
-        const audio = new Audio(soundSrc);
-        audio.play();
-      }
+    markers.forEach(marker => {
+      marker.addEventListener("click", () => {
+        const soundSrc = marker.getAttribute("data-sound");
+        if (soundSrc) {
+          const audio = new Audio(soundSrc);
+          audio.play();
+        }
+      });
     });
   });
-});
-
-  </script>
-    </DOMContentLoaded>
+</script>
 </body>
 </html>
