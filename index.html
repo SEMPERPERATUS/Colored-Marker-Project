@@ -83,14 +83,9 @@
       text-align: center;
     }
 
-    /* Hover effect */
-    .marker:hover .lid {
-      transform: translateY(-40px);
-      transition: transform 0.3s ease;
-    }
-    
-    .marker.active .lid {
-  transform: translateY(-40px); /* or whatever your "up" position is */
+  .marker:hover .lid {
+  transform: translateY(-40px);
+  transition: transform 0.3s ease;
 }
 
 .marker .lid {
@@ -242,20 +237,30 @@
 
   <audio id="click-sound" src="click.mp3"></audio>
 
- <script>
+<script>
   document.addEventListener("DOMContentLoaded", () => {
     const markers = document.querySelectorAll(".marker");
 
     markers.forEach(marker => {
       marker.addEventListener("click", () => {
+        // Play sound
         const soundSrc = marker.getAttribute("data-sound");
         if (soundSrc) {
           const audio = new Audio(soundSrc);
           audio.play();
         }
+
+        // Trigger lid animation
+        marker.classList.add("active");
+
+        // Optional: remove the class after animation ends
+        setTimeout(() => {
+          marker.classList.remove("active");
+        }, 300); // match your CSS transition duration
       });
     });
   });
 </script>
+
 </body>
 </html>
