@@ -243,20 +243,26 @@
 
     markers.forEach(marker => {
       marker.addEventListener("click", () => {
-        // Play sound
-        const soundSrc = marker.getAttribute("data-sound");
-        if (soundSrc) {
-          const audio = new Audio(soundSrc);
-          audio.play();
-        }
-
-        // Trigger lid animation
+        // Add active class to trigger lid animation
         marker.classList.add("active");
 
-        // Optional: remove the class after animation ends
+        // Delay the opening sound slightly to sync with lid motion
+        setTimeout(() => {
+          const openSoundSrc = marker.getAttribute("data-sound");
+          if (openSoundSrc) {
+            const openAudio = new Audio(openSoundSrc);
+            openAudio.play();
+          }
+        }, 100); // slight delay for realism
+
+        // Remove active class after animation and play closing sound
         setTimeout(() => {
           marker.classList.remove("active");
-        }, 300); // match your CSS transition duration
+
+          // Play closing sound (optional: use a different file like "snap.mp3")
+          const closeAudio = new Audio("snap.mp3");
+          closeAudio.play();
+        }, 400); // matches lid animation duration
       });
     });
   });
