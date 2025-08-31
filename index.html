@@ -240,28 +240,21 @@
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const markers = document.querySelectorAll(".marker");
+    const openSound = document.getElementById("open-sound");
+    const closeSound = document.getElementById("close-sound");
 
     markers.forEach(marker => {
       marker.addEventListener("click", () => {
         const isActive = marker.classList.contains("active");
 
         if (isActive) {
-          // Lid is open → close it
           marker.classList.remove("active");
-
-          // Play closing sound
-          const closeAudio = new Audio("snap.mp3");
-          closeAudio.play();
+          closeSound.currentTime = 0;
+          closeSound.play();
         } else {
-          // Lid is closed → open it
           marker.classList.add("active");
-
-          // Play opening sound
-          const openSoundSrc = marker.getAttribute("data-sound");
-          if (openSoundSrc) {
-            const openAudio = new Audio(openSoundSrc);
-            openAudio.play();
-          }
+          openSound.currentTime = 0;
+          openSound.play();
         }
       });
     });
