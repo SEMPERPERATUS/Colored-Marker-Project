@@ -235,13 +235,12 @@
   </div>
 
 
-  <audio id="click-sound" src="click.mp3"></audio>
+<audio id="click-sound" src="click.mp3" preload="auto"></audio>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const markers = document.querySelectorAll(".marker");
-    const openSound = document.getElementById("open-sound");
-    const closeSound = document.getElementById("close-sound");
+    const clickSound = document.getElementById("click-sound");
 
     markers.forEach(marker => {
       marker.addEventListener("click", () => {
@@ -249,17 +248,18 @@
 
         if (isActive) {
           marker.classList.remove("active");
-          closeSound.currentTime = 0;
-          closeSound.play();
         } else {
           marker.classList.add("active");
-          openSound.currentTime = 0;
-          openSound.play();
         }
+
+        // Play the same sound for both actions
+        clickSound.currentTime = 0;
+        clickSound.play();
       });
     });
   });
 </script>
+
 
 </body>
 </html>
