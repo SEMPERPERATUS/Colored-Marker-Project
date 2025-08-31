@@ -239,16 +239,17 @@
     </div>
   </div>
 
- <audio id="click-sound" src="click.mp3"></audio>
+
+  <button id="red-marker">Red Marker</button>
+
+  <audio id="click-sound" src="click.mp3"></audio>
 
   <script>
-    // Get references to the button and audio
     const redButton = document.getElementById("red-marker");
     const clickSound = document.getElementById("click-sound");
 
-    // Play sound on button click
     redButton.addEventListener("click", () => {
-      clickSound.currentTime = 0; // rewind to start
+      clickSound.currentTime = 0;
       clickSound.play();
     });
   </script>
