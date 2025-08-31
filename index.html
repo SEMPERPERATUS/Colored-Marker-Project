@@ -168,7 +168,7 @@
 
   <div class="marker-grid">
 
-    <div class="marker red">
+    <div class="marker red" data-sound="click.mp3">
       <div class="lid"></div>
       <div class="marker-body">
         <div class="marker-stripe top"></div>
@@ -178,7 +178,7 @@
       <div class="marker-label">Red</div>
     </div>
 
-    <div class="marker orange">
+    <div class="marker orange" data-sound="click.mp3">
       <div class="lid"></div>
       <div class="marker-body">
         <div class="marker-stripe top"></div>
@@ -188,7 +188,7 @@
       <div class="marker-label">Orange</div>
     </div>
 
-    <div class="marker yellow">
+    <div class="marker yellow" data-sound="click.mp3">
       <div class="lid"></div>
       <div class="marker-body">
         <div class="marker-stripe top"></div>
@@ -198,7 +198,7 @@
       <div class="marker-label">Yellow</div>
     </div>
 
-    <div class="marker green">
+    <div class="marker green" data-sound="click.mp3">
       <div class="lid"></div>
       <div class="marker-body">
         <div class="marker-stripe top"></div>
@@ -208,7 +208,7 @@
       <div class="marker-label">Green</div>
     </div>
 
-    <div class="marker blue">
+    <div class="marker blue" data-sound="click.mp3">
       <div class="lid"></div>
       <div class="marker-body">
         <div class="marker-stripe top"></div>
@@ -218,7 +218,7 @@
       <div class="marker-label">Blue</div>
     </div>
 
-    <div class="marker indigo">
+    <div class="marker indigo" data-sound="click.mp3">
       <div class="lid"></div>
       <div class="marker-body">
         <div class="marker-stripe top"></div>
@@ -228,7 +228,7 @@
       <div class="marker-label">Indigo</div>
     </div>
 
-    <div class="marker violet">
+    <div class="marker violet" data-sound="click.mp3">
       <div class="lid"></div>
       <div class="marker-body">
         <div class="marker-stripe top"></div>
@@ -246,13 +246,20 @@
 
   <DOMContentLoaded>
   <script>
-    const redButton = document.getElementById("red-marker");
-    const clickSound = document.getElementById("click-sound");
+   document.addEventListener("DOMContentLoaded", () => {
+  const markers = document.querySelectorAll(".marker");
 
-    redButton.addEventListener("click", () => {
-      clickSound.currentTime = 0;
-      clickSound.play();
+  markers.forEach(marker => {
+    marker.addEventListener("click", () => {
+      const soundSrc = marker.getAttribute("data-sound");
+      if (soundSrc) {
+        const audio = new Audio(soundSrc);
+        audio.play();
+      }
     });
+  });
+});
+
   </script>
     </DOMContentLoaded>
 </body>
