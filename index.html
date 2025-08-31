@@ -239,20 +239,17 @@
     </div>
   </div>
 
-<script>
-    
-document.querySelectorAll('.marker').forEach(marker => {
-  marker.addEventListener('click', () => {
-    // If this marker is already active, deactivate it
-    if (marker.classList.contains('active')) {
-      marker.classList.remove('active');
-    } else {
-      // Remove 'active' from all markers
-      document.querySelectorAll('.marker').forEach(m => m.classList.remove('active'));
-      // Activate the clicked marker
-      marker.classList.add('active');
-    }
-  });
-});
-</script>
+ <audio id="click-sound" src="click.mp3"></audio>
+
+  <script>
+    // Get references to the button and audio
+    const redButton = document.getElementById("red-marker");
+    const clickSound = document.getElementById("click-sound");
+
+    // Play sound on button click
+    redButton.addEventListener("click", () => {
+      clickSound.currentTime = 0; // rewind to start
+      clickSound.play();
+    });
+  </script>
 </body>
